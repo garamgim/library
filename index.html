@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="top">
+        <p>Library</p>
+        <a href="">Log In</a>
+    </div>
+
+    <div id="main">
+    </div>
+
+    <button id="append">+</button>
+
+    <dialog id="dialog">
+        <form method="dialog" id="form">
+
+            <div class="dialog-header">
+                <p id="dialog-title">Add a New Book!</p>
+                <button id="close" value="cancel">X</button>
+            </div>
+
+            <div class="dialog-body">
+                <div class="form-options">
+                    <label for="book-title">Title: </label>
+                    <input type="text" id="book-title" name="book-title" autofocus required>
+                </div>
+
+                <div class="form-options">
+                    <label for="book-author">Author: </label>
+                    <input type="text" id="book-author" name="book-author" required>
+                </div>
+
+                <div class="form-options">
+                    <label for="book-pages">Pages: </label>
+                    <input type="text" id="book-pages" pattern="[0-9]" name="book-pages" required>
+                </div>
+
+                <div class="form-options">
+                    <label for="book-read">Read</label>
+                    <input type="checkbox" name="read" id="book-read" name="book-read" required>
+                </div>
+            </div>
+
+            <button type="submit" id="confirm">Add to Library</button>
+
+        </form>
+    </dialog>
+
+</body>
+
+<script src="app.js"></script>
+
+</html>
