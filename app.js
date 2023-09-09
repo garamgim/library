@@ -33,30 +33,46 @@ function addBookCardsToDisplay(num) {
     div.id = `book${num + 1}`
     div.className = 'book'
 
-    const p1 = document.createElement('p');
-    p1.className = 'title'
-    p1.appendChild(document.createTextNode(`Title: ${myLibrary[num].title}`));
+    const removeCardBtn = document.createElement('button');
+    removeCardBtn.id = 'remove-card'
+    removeCardBtn.textContent = 'X'
+    removeCardBtn.addEventListener('click', () => {
+        myLibrary.splice(num, 1);
+        mainBoard.removeChild(div);
+    })
 
-    const p2 = document.createElement('p');
-    p2.className = 'author'
-    p2.appendChild(document.createTextNode(`Author: ${myLibrary[num].author}`));
+    const pTitle = document.createElement('p');
+    pTitle.className = 'title'
+    pTitle.appendChild(document.createTextNode(`Title: ${myLibrary[num].title}`));
 
-    const p3 = document.createElement('p');
-    p3.className = 'pages'
-    p3.appendChild(document.createTextNode(`Pages: ${myLibrary[num].pages}`));
+    const pAuthor = document.createElement('p');
+    pAuthor.className = 'author'
+    pAuthor.appendChild(document.createTextNode(`Author: ${myLibrary[num].author}`));
 
-    const isRead = document.createElement('p');
-    isRead.className = 'read'
+    const pPages = document.createElement('p');
+    pPages.className = 'pages'
+    pPages.appendChild(document.createTextNode(`Pages: ${myLibrary[num].pages}`));
+
+    const readBtn = document.createElement('button');
+    readBtn.id = 'read';
     if (myLibrary[num].read === true) {
-        isRead.appendChild(document.createTextNode("Read"));
+        readBtn.textContent = 'Read'
     } else {
-        isRead.appendChild(document.createTextNode("Not read"));
+        readBtn.textContent = 'Not Read'
     }
 
-    div.appendChild(p1);
-    div.appendChild(p2);
-    div.appendChild(p3);
-    div.appendChild(isRead);
+    readBtn.addEventListener('click', () => {
+        myLibrary[num].read = !myLibrary[num].read
+        if (readBtn.textContent === "Read") {
+            readBtn.textContent = "Not Read";
+        } else { readBtn.textContent = "Read" };
+    })
+
+    div.appendChild(removeCardBtn);
+    div.appendChild(pTitle);
+    div.appendChild(pAuthor);
+    div.appendChild(pPages);
+    div.appendChild(readBtn);
 
     mainBoard.insertBefore(div, mainBoard.firstChild);
 
@@ -113,7 +129,6 @@ function addBookToLibrary() {
     const bookString = `book${myLibrary.length + 1}`
     window[bookString] = new Book(titleInput, authorInput, pagesInput, readInput)
     myLibrary.push(window[bookString]);
-    console.log(myLibrary);
 }
 
 for (let i = 0; i < myLibrary.length; i++) {
