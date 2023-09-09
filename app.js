@@ -26,7 +26,6 @@ function Book(title, author, pages, read) {
 
 let mainBoard = document.getElementById('main')
 
-
 function addBookCardsToDisplay(num) {
 
     let div = document.createElement('div');
@@ -35,7 +34,7 @@ function addBookCardsToDisplay(num) {
 
     const removeCardBtn = document.createElement('button');
     removeCardBtn.id = 'remove-card'
-    removeCardBtn.textContent = 'X'
+    removeCardBtn.textContent = '✕'
     removeCardBtn.addEventListener('click', () => {
         myLibrary.splice(num, 1);
         mainBoard.removeChild(div);
@@ -43,29 +42,47 @@ function addBookCardsToDisplay(num) {
 
     const pTitle = document.createElement('p');
     pTitle.className = 'title'
-    pTitle.appendChild(document.createTextNode(`Title: ${myLibrary[num].title}`));
+    const boldedTitle = document.createElement('strong');
+    boldedTitle.innerHTML = `${myLibrary[num].title}`
+    pTitle.appendChild(document.createTextNode('Title: '));
+    pTitle.appendChild(boldedTitle);
 
     const pAuthor = document.createElement('p');
     pAuthor.className = 'author'
-    pAuthor.appendChild(document.createTextNode(`Author: ${myLibrary[num].author}`));
+    const boldedAuthor = document.createElement('strong');
+    boldedAuthor.innerHTML = `${myLibrary[num].author}`
+    pAuthor.appendChild(document.createTextNode('Author: '));
+    pAuthor.appendChild(boldedAuthor);
 
     const pPages = document.createElement('p');
     pPages.className = 'pages'
-    pPages.appendChild(document.createTextNode(`Pages: ${myLibrary[num].pages}`));
+    const boldedPages = document.createElement('strong');
+    boldedPages.innerHTML = `${myLibrary[num].pages}`
+    pPages.appendChild(document.createTextNode('Pages: '));
+    pPages.appendChild(boldedPages);
 
     const readBtn = document.createElement('button');
     readBtn.id = 'read';
     if (myLibrary[num].read === true) {
         readBtn.textContent = 'Read'
+        readBtn.style.backgroundColor = '#9acb97';
     } else {
         readBtn.textContent = 'Not Read'
+        readBtn.style.backgroundColor = '#fdc795';
     }
 
     readBtn.addEventListener('click', () => {
+
         myLibrary[num].read = !myLibrary[num].read
+
         if (readBtn.textContent === "Read") {
             readBtn.textContent = "Not Read";
-        } else { readBtn.textContent = "Read" };
+            readBtn.style.backgroundColor = '#fdc795';
+        } else {
+            readBtn.textContent = "Read";
+            readBtn.style.backgroundColor = '#9acb97';
+        };
+
     })
 
     div.appendChild(removeCardBtn);
@@ -82,7 +99,7 @@ function addBookCardsToDisplay(num) {
 // Buttons
 
 const dialogCloseBtn = document.getElementById("close");
-const confirmBtn = document.getElementById("confirm");
+const addToLibraryBtn = document.getElementById("add");
 const appendBtn = document.getElementById("append");
 
 
@@ -105,7 +122,7 @@ dialogCloseBtn.addEventListener('click', () => {
 
 const form = document.getElementById('form');
 
-confirmBtn.addEventListener('click', (e) => {
+addToLibraryBtn.addEventListener('click', (e) => {
     e.preventDefault();
 
     let checkStatus = form.checkValidity();
