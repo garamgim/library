@@ -184,3 +184,59 @@ button:active {
     transform: translateX(1px) translateY(1px);
     box-shadow: none !important;
 }
+
+
+/* Media Query */
+
+@media (max-width: 1350px) {
+    div#main {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px 0;
+    }
+}
+
+@media (max-width: 1000px) {
+    div#main {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 700px) {
+    div#main {
+        gap: 25px 0;
+    }
+
+    div.book {
+        font-size: 14px;
+        width: 200px;
+        height: 130px;
+    }
+}
+
+@media (max-width: 470px) {
+    div.book {
+        font-size: 12px;
+        width: 150px;
+        height: 100px;
+    }
+
+    button#remove-card {
+        font-size: 12px;
+        width: 20px;
+        height: 20px;
+        color: white;
+        box-shadow: inset 2px 2px #546777;
+    }
+}
+
+@media (max-width: 370px) {
+    div#main {
+        grid-template-columns: 1fr;
+    }
+
+    div.book {
+        width: 180px;
+        height: 90px;
+        padding: 5px 5px 20px 5px;
+    }
+}
