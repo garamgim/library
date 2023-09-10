@@ -34,6 +34,7 @@ div#main {
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 1fr 1fr;
     place-items: center;
+    gap: 20px 0;
 }
 
 div.book {
@@ -191,7 +192,6 @@ button:active {
 @media (max-width: 1350px) {
     div#main {
         grid-template-columns: repeat(3, 1fr);
-        gap: 20px 0;
     }
 }
 
